@@ -7,6 +7,18 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
+                "imageBase64": "Image Base 64",
+                "blog": "Blog",
+                "entry": "Entry",
+                "tag": "Tag",
+                "propConfig": "Prop Config",
+                "personne": "Personne",
+                "adresse": "Adresse",
+                "device": "Device",
+                "evenement": "Evenement",
+                "participant": "Participant",
+                "commercant": "Commercant",
+                "commercantInformations": "Commercant Informations",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

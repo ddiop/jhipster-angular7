@@ -1,0 +1,31 @@
+{
+    "name": "Adresse",
+    "fields": [
+        {
+            "fieldName": "adressePostale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codePostale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ville",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pays",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190601081151",
+    "entityTableName": "adresse",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

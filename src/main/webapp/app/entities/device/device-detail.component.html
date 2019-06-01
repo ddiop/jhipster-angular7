@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="device">
+            <h2><span jhiTranslate="jhipsterApp.device.detail.title">Device</span> {{device.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterApp.device.uuid">Uuid</span></dt>
+                <dd>
+                    <span>{{device.uuid}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.numero">Numero</span></dt>
+                <dd>
+                    <span>{{device.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.indicatifInternational">Indicatif International</span></dt>
+                <dd>
+                    <span>{{device.indicatifInternational}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.notificationUid">Notification Uid</span></dt>
+                <dd>
+                    <span>{{device.notificationUid}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.marque">Marque</span></dt>
+                <dd>
+                    <span>{{device.marque}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.model">Model</span></dt>
+                <dd>
+                    <span>{{device.model}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.activationCode">Activation Code</span></dt>
+                <dd>
+                    <span>{{device.activationCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.activationTentative">Activation Tentative</span></dt>
+                <dd>
+                    <span>{{device.activationTentative}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.device.activationDate">Activation Date</span></dt>
+                <dd>
+                    <span>{{device.activationDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/device', device.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

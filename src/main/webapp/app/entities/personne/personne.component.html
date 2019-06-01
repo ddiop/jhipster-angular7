@@ -1,0 +1,88 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterApp.personne.home.title">Personnes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-personne" [routerLink]="['/personne/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterApp.personne.home.createLabel">
+            Create new Personne
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="personnes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="surnom"><span jhiTranslate="jhipsterApp.personne.surnom">Surnom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="civilite"><span jhiTranslate="jhipsterApp.personne.civilite">Civilite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prenom"><span jhiTranslate="jhipsterApp.personne.prenom">Prenom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nom"><span jhiTranslate="jhipsterApp.personne.nom">Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mail"><span jhiTranslate="jhipsterApp.personne.mail">Mail</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="password"><span jhiTranslate="jhipsterApp.personne.password">Password</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateNaissance"><span jhiTranslate="jhipsterApp.personne.dateNaissance">Date Naissance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cguVersion"><span jhiTranslate="jhipsterApp.personne.cguVersion">Cgu Version</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cguValide"><span jhiTranslate="jhipsterApp.personne.cguValide">Cgu Valide</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cguDateValidation"><span jhiTranslate="jhipsterApp.personne.cguDateValidation">Cgu Date Validation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="langue"><span jhiTranslate="jhipsterApp.personne.langue">Langue</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="adresseResidence.id"><span jhiTranslate="jhipsterApp.personne.adresseResidence">Adresse Residence</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let personne of personnes ;trackBy: trackId">
+                <td><a [routerLink]="['/personne', personne.id, 'view' ]">{{personne.id}}</a></td>
+                <td>{{personne.surnom}}</td>
+                <td jhiTranslate="{{'jhipsterApp.CIVILITE.' + personne.civilite}}">{{personne.civilite}}</td>
+                <td>{{personne.prenom}}</td>
+                <td>{{personne.nom}}</td>
+                <td>{{personne.mail}}</td>
+                <td>{{personne.password}}</td>
+                <td>{{personne.dateNaissance | date:'mediumDate'}}</td>
+                <td>{{personne.cguVersion}}</td>
+                <td>{{personne.cguValide}}</td>
+                <td>{{personne.cguDateValidation | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'jhipsterApp.LANGUAGE.' + personne.langue}}">{{personne.langue}}</td>
+                <td>
+                    <div *ngIf="personne.adresseResidence">
+                        <a [routerLink]="['../adresse', personne.adresseResidence?.id, 'view' ]" >{{personne.adresseResidence?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/personne', personne.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/personne', personne.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'personne', { outlets: { popup: personne.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="personnes && personnes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

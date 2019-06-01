@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-device-heading" jhiTranslate="jhipsterApp.device.home.createOrEditLabel">Create or edit a Device</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!device.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="device.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.uuid" for="field_uuid">Uuid</label>
+                    <input type="text" class="form-control" name="uuid" id="field_uuid"
+                        [(ngModel)]="device.uuid" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.numero" for="field_numero">Numero</label>
+                    <input type="text" class="form-control" name="numero" id="field_numero"
+                        [(ngModel)]="device.numero" maxlength="10" pattern="0[67][0-9]{8}"/>
+                    <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numero?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.numero?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Numero' }">
+                            This field should follow pattern for "Numero".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.indicatifInternational" for="field_indicatifInternational">Indicatif International</label>
+                    <input type="number" class="form-control" name="indicatifInternational" id="field_indicatifInternational"
+                        [(ngModel)]="device.indicatifInternational" min="0" jhiMin="0" max="999" jhiMax="999"/>
+                    <div [hidden]="!(editForm.controls.indicatifInternational?.dirty && editForm.controls.indicatifInternational?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.indicatifInternational?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.indicatifInternational?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 999 }">
+                            This field cannot be more than 999.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.indicatifInternational?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.notificationUid" for="field_notificationUid">Notification Uid</label>
+                    <input type="text" class="form-control" name="notificationUid" id="field_notificationUid"
+                        [(ngModel)]="device.notificationUid" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.marque" for="field_marque">Marque</label>
+                    <input type="text" class="form-control" name="marque" id="field_marque"
+                        [(ngModel)]="device.marque" maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.marque?.dirty && editForm.controls.marque?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.marque?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.model" for="field_model">Model</label>
+                    <input type="text" class="form-control" name="model" id="field_model"
+                        [(ngModel)]="device.model" maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.model?.dirty && editForm.controls.model?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.model?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.activationCode" for="field_activationCode">Activation Code</label>
+                    <input type="number" class="form-control" name="activationCode" id="field_activationCode"
+                        [(ngModel)]="device.activationCode" min="1000" jhiMin="1000" max="9999" jhiMax="9999"/>
+                    <div [hidden]="!(editForm.controls.activationCode?.dirty && editForm.controls.activationCode?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.activationCode?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 1000 }">
+                            This field should be at least 1000.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.activationCode?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 9999 }">
+                            This field cannot be more than 9999.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.activationCode?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.activationTentative" for="field_activationTentative">Activation Tentative</label>
+                    <input type="number" class="form-control" name="activationTentative" id="field_activationTentative"
+                        [(ngModel)]="device.activationTentative" min="0" jhiMin="0" max="3" jhiMax="3"/>
+                    <div [hidden]="!(editForm.controls.activationTentative?.dirty && editForm.controls.activationTentative?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.activationTentative?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.activationTentative?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 3 }">
+                            This field cannot be more than 3.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.activationTentative?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.device.activationDate" for="field_activationDate">Activation Date</label>
+                    <div class="d-flex">
+                        <input id="field_activationDate" type="datetime-local" class="form-control" name="activationDate" [(ngModel)]="activationDate" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

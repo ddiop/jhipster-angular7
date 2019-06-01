@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="imageBase64">
+            <h2><span jhiTranslate="jhipsterApp.imageBase64.detail.title">Image Base 64</span> {{imageBase64.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterApp.imageBase64.name">Name</span></dt>
+                <dd>
+                    <span>{{imageBase64.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.imageBase64.chemin">Chemin</span></dt>
+                <dd>
+                    <span>{{imageBase64.chemin}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.imageBase64.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="imageBase64.image">
+                        <a (click)="openFile(imageBase64.imageContentType, imageBase64.image)" jhiTranslate="entity.action.open">open</a>
+                        {{imageBase64.imageContentType}}, {{byteSize(imageBase64.image)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image-base-64', imageBase64.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

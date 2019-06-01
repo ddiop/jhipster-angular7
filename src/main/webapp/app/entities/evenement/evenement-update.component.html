@@ -1,0 +1,117 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-evenement-heading" jhiTranslate="jhipsterApp.evenement.home.createOrEditLabel">Create or edit a Evenement</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!evenement.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="evenement.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="evenement.nom" required minlength="2" maxlength="40"/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }">
+                        This field is required to be at least 2 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.detail" for="field_detail">Detail</label>
+                    <input type="text" class="form-control" name="detail" id="field_detail"
+                        [(ngModel)]="evenement.detail" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.lieuDepart" for="field_lieuDepart">Lieu Depart</label>
+                    <input type="text" class="form-control" name="lieuDepart" id="field_lieuDepart"
+                        [(ngModel)]="evenement.lieuDepart" maxlength="40"/>
+                    <div [hidden]="!(editForm.controls.lieuDepart?.dirty && editForm.controls.lieuDepart?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lieuDepart?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.lieuDestination" for="field_lieuDestination">Lieu Destination</label>
+                    <input type="text" class="form-control" name="lieuDestination" id="field_lieuDestination"
+                        [(ngModel)]="evenement.lieuDestination" maxlength="40"/>
+                    <div [hidden]="!(editForm.controls.lieuDestination?.dirty && editForm.controls.lieuDestination?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lieuDestination?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.dateDepart" for="field_dateDepart">Date Depart</label>
+                    <div class="input-group">
+                        <input id="field_dateDepart" type="text" class="form-control" name="dateDepart" ngbDatepicker  #dateDepartDp="ngbDatepicker" [(ngModel)]="evenement.dateDepart"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDepartDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.dateRetour" for="field_dateRetour">Date Retour</label>
+                    <div class="input-group">
+                        <input id="field_dateRetour" type="text" class="form-control" name="dateRetour" ngbDatepicker  #dateRetourDp="ngbDatepicker" [(ngModel)]="evenement.dateRetour"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateRetourDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.dateReflexion" for="field_dateReflexion">Date Reflexion</label>
+                    <div class="input-group">
+                        <input id="field_dateReflexion" type="text" class="form-control" name="dateReflexion" ngbDatepicker  #dateReflexionDp="ngbDatepicker" [(ngModel)]="evenement.dateReflexion"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateReflexionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.dateCreation" for="field_dateCreation">Date Creation</label>
+                    <div class="input-group">
+                        <input id="field_dateCreation" type="text" class="form-control" name="dateCreation" ngbDatepicker  #dateCreationDp="ngbDatepicker" [(ngModel)]="evenement.dateCreation"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.evenement.commercant" for="field_commercant">Commercant</label>
+                    <select class="form-control" id="field_commercant" name="commercant" [(ngModel)]="evenement.commercant">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="commercantOption.id === evenement.commercant?.id ? evenement.commercant : commercantOption" *ngFor="let commercantOption of commercants; trackBy: trackCommercantById">{{commercantOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

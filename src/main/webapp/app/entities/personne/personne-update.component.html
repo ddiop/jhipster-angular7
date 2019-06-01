@@ -1,0 +1,178 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-personne-heading" jhiTranslate="jhipsterApp.personne.home.createOrEditLabel">Create or edit a Personne</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!personne.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="personne.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.surnom" for="field_surnom">Surnom</label>
+                    <input type="text" class="form-control" name="surnom" id="field_surnom"
+                        [(ngModel)]="personne.surnom" required minlength="2" maxlength="20" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]\"/>
+                    <div [hidden]="!(editForm.controls.surnom?.dirty && editForm.controls.surnom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surnom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surnom?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }">
+                        This field is required to be at least 2 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surnom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.surnom?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Surnom' }">
+                            This field should follow pattern for "Surnom".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.civilite" for="field_civilite">Civilite</label>
+                    <select class="form-control" name="civilite" [(ngModel)]="personne.civilite" id="field_civilite" >
+                        <option value="MR">{{'jhipsterApp.CIVILITE.MR' | translate}}</option>
+                        <option value="MME">{{'jhipsterApp.CIVILITE.MME' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.prenom" for="field_prenom">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="field_prenom"
+                        [(ngModel)]="personne.prenom" minlength="2" maxlength="40" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]\"/>
+                    <div [hidden]="!(editForm.controls.prenom?.dirty && editForm.controls.prenom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.prenom?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }">
+                        This field is required to be at least 2 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.prenom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.prenom?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Prenom' }">
+                            This field should follow pattern for "Prenom".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="personne.nom" minlength="2" maxlength="40" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]\"/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }">
+                        This field is required to be at least 2 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nom?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Nom' }">
+                            This field should follow pattern for "Nom".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.mail" for="field_mail">Mail</label>
+                    <input type="text" class="form-control" name="mail" id="field_mail"
+                        [(ngModel)]="personne.mail" maxlength="254"/>
+                    <div [hidden]="!(editForm.controls.mail?.dirty && editForm.controls.mail?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mail?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 254 }">
+                        This field cannot be longer than 254 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.password" for="field_password">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                        [(ngModel)]="personne.password" minlength="8" maxlength="120"/>
+                    <div [hidden]="!(editForm.controls.password?.dirty && editForm.controls.password?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.password?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 8 }">
+                        This field is required to be at least 8 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.password?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 120 }">
+                        This field cannot be longer than 120 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.dateNaissance" for="field_dateNaissance">Date Naissance</label>
+                    <div class="input-group">
+                        <input id="field_dateNaissance" type="text" class="form-control" name="dateNaissance" ngbDatepicker  #dateNaissanceDp="ngbDatepicker" [(ngModel)]="personne.dateNaissance"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateNaissanceDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.cguVersion" for="field_cguVersion">Cgu Version</label>
+                    <input type="number" class="form-control" name="cguVersion" id="field_cguVersion"
+                        [(ngModel)]="personne.cguVersion" min="1" jhiMin="1"/>
+                    <div [hidden]="!(editForm.controls.cguVersion?.dirty && editForm.controls.cguVersion?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.cguVersion?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.cguVersion?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.cguValide" for="field_cguValide">Cgu Valide</label>
+                    <input type="checkbox" class="form-control" name="cguValide" id="field_cguValide"
+                        [(ngModel)]="personne.cguValide" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.cguDateValidation" for="field_cguDateValidation">Cgu Date Validation</label>
+                    <div class="input-group">
+                        <input id="field_cguDateValidation" type="text" class="form-control" name="cguDateValidation" ngbDatepicker  #cguDateValidationDp="ngbDatepicker" [(ngModel)]="personne.cguDateValidation"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="cguDateValidationDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.langue" for="field_langue">Langue</label>
+                    <select class="form-control" name="langue" [(ngModel)]="personne.langue" id="field_langue" >
+                        <option value="FR">{{'jhipsterApp.LANGUAGE.FR' | translate}}</option>
+                        <option value="EN">{{'jhipsterApp.LANGUAGE.EN' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterApp.personne.adresseResidence" for="field_adresseResidence">Adresse Residence</label>
+                    <select class="form-control" id="field_adresseResidence" name="adresseResidence" [(ngModel)]="personne.adresseResidence">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="adresseOption.id === personne.adresseResidence?.id ? personne.adresseResidence : adresseOption" *ngFor="let adresseOption of adresseresidences; trackBy: trackAdresseById">{{adresseOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterApp.personne.device" for="field_device">Device</label>
+                    <select class="form-control" id="field_device" multiple name="device" [(ngModel)]="personne.devices">
+                        <option [ngValue]="getSelected(personne.devices, deviceOption)" *ngFor="let deviceOption of devices; trackBy: trackDeviceById">{{deviceOption.uuid}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

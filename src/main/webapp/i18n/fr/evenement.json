@@ -1,0 +1,30 @@
+{
+    "jhipsterApp": {
+        "evenement": {
+            "home": {
+                "title": "Evenements",
+                "createLabel": "Créer un nouveau Evenement",
+                "createOrEditLabel": "Créer ou éditer un Evenement"
+            },
+            "created": "Un nouveau Evenement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Evenement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Evenement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Evenement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Evenement"
+            },
+            "nom": "Nom",
+            "detail": "Detail",
+            "lieuDepart": "Lieu Depart",
+            "lieuDestination": "Lieu Destination",
+            "dateDepart": "Date Depart",
+            "dateRetour": "Date Retour",
+            "dateReflexion": "Date Reflexion",
+            "dateCreation": "Date Creation",
+            "commercant": "Commercant",
+            "participant": "Participant"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "jhipsterApp": {
+        "CIVILITE": {
+            "null": "",
+            "MR": "MR",
+            "MME": "MME"
+        }
+    }
+}

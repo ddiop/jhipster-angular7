@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="evenement">
+            <h2><span jhiTranslate="jhipsterApp.evenement.detail.title">Evenement</span> {{evenement.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterApp.evenement.nom">Nom</span></dt>
+                <dd>
+                    <span>{{evenement.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.detail">Detail</span></dt>
+                <dd>
+                    <span>{{evenement.detail}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.lieuDepart">Lieu Depart</span></dt>
+                <dd>
+                    <span>{{evenement.lieuDepart}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.lieuDestination">Lieu Destination</span></dt>
+                <dd>
+                    <span>{{evenement.lieuDestination}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.dateDepart">Date Depart</span></dt>
+                <dd>
+                    <span>{{evenement.dateDepart}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.dateRetour">Date Retour</span></dt>
+                <dd>
+                    <span>{{evenement.dateRetour}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.dateReflexion">Date Reflexion</span></dt>
+                <dd>
+                    <span>{{evenement.dateReflexion}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.dateCreation">Date Creation</span></dt>
+                <dd>
+                    <span>{{evenement.dateCreation}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.evenement.commercant">Commercant</span></dt>
+                <dd>
+                    <div *ngIf="evenement.commercant">
+                        <a [routerLink]="['/commercant', evenement.commercant?.id, 'view']">{{evenement.commercant?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/evenement', evenement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

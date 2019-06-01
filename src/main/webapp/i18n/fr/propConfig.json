@@ -1,0 +1,24 @@
+{
+    "jhipsterApp": {
+        "propConfig": {
+            "home": {
+                "title": "PropConfigs",
+                "createLabel": "Créer un nouveau Prop Config",
+                "createOrEditLabel": "Créer ou éditer un Prop Config"
+            },
+            "created": "Un nouveau Prop Config a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Prop Config avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Prop Config avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Prop Config {{ id }} ?"
+            },
+            "detail": {
+                "title": "Prop Config"
+            },
+            "nom": "Nom",
+            "valeur": "Valeur",
+            "description": "Description",
+            "version": "Version"
+        }
+    }
+}

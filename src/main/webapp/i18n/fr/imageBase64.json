@@ -1,0 +1,23 @@
+{
+    "jhipsterApp": {
+        "imageBase64": {
+            "home": {
+                "title": "ImageBase64S",
+                "createLabel": "Créer un nouveau Image Base 64",
+                "createOrEditLabel": "Créer ou éditer un Image Base 64"
+            },
+            "created": "Un nouveau Image Base 64 a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Image Base 64 avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Image Base 64 avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Image Base 64 {{ id }} ?"
+            },
+            "detail": {
+                "title": "Image Base 64"
+            },
+            "name": "Name",
+            "chemin": "Chemin",
+            "image": "Image"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "ImageBase64",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "chemin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190501105351",
+    "entityTableName": "image_base_64",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

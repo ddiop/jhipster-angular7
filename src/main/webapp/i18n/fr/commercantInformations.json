@@ -1,0 +1,23 @@
+{
+    "jhipsterApp": {
+        "commercantInformations": {
+            "home": {
+                "title": "CommercantInformations",
+                "createLabel": "Créer un nouveau Commercant Informations",
+                "createOrEditLabel": "Créer ou éditer un Commercant Informations"
+            },
+            "created": "Un nouveau Commercant Informations a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Commercant Informations avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Commercant Informations avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Commercant Informations {{ id }} ?"
+            },
+            "detail": {
+                "title": "Commercant Informations"
+            },
+            "cle": "Cle",
+            "valeur": "Valeur",
+            "commercant": "Commercant"
+        }
+    }
+}

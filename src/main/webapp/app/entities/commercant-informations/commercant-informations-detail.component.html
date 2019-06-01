@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="commercantInformations">
+            <h2><span jhiTranslate="jhipsterApp.commercantInformations.detail.title">Commercant Informations</span> {{commercantInformations.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterApp.commercantInformations.cle">Cle</span></dt>
+                <dd>
+                    <span>{{commercantInformations.cle}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.commercantInformations.valeur">Valeur</span></dt>
+                <dd>
+                    <span>{{commercantInformations.valeur}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.commercantInformations.commercant">Commercant</span></dt>
+                <dd>
+                    <div *ngIf="commercantInformations.commercant">
+                        <a [routerLink]="['/commercant', commercantInformations.commercant?.id, 'view']">{{commercantInformations.commercant?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/commercant-informations', commercantInformations.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

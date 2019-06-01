@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="personne">
+            <h2><span jhiTranslate="jhipsterApp.personne.detail.title">Personne</span> {{personne.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterApp.personne.surnom">Surnom</span></dt>
+                <dd>
+                    <span>{{personne.surnom}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.civilite">Civilite</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterApp.CIVILITE.' + personne.civilite}}">{{personne.civilite}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{personne.prenom}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.nom">Nom</span></dt>
+                <dd>
+                    <span>{{personne.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.mail">Mail</span></dt>
+                <dd>
+                    <span>{{personne.mail}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.password">Password</span></dt>
+                <dd>
+                    <span>{{personne.password}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{personne.dateNaissance}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.cguVersion">Cgu Version</span></dt>
+                <dd>
+                    <span>{{personne.cguVersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.cguValide">Cgu Valide</span></dt>
+                <dd>
+                    <span>{{personne.cguValide}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.cguDateValidation">Cgu Date Validation</span></dt>
+                <dd>
+                    <span>{{personne.cguDateValidation}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.langue">Langue</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterApp.LANGUAGE.' + personne.langue}}">{{personne.langue}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.adresseResidence">Adresse Residence</span></dt>
+                <dd>
+                    <div *ngIf="personne.adresseResidence">
+                        <a [routerLink]="['/adresse', personne.adresseResidence?.id, 'view']">{{personne.adresseResidence?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterApp.personne.device">Device</span></dt>
+                <dd>
+                    <span *ngFor="let device of personne.devices; let last = last">
+                        <a [routerLink]="['/device', device?.id, 'view' ]">{{device.uuid}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/personne', personne.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

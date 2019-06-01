@@ -1,0 +1,91 @@
+{
+    "name": "Device",
+    "fields": [
+        {
+            "fieldName": "uuid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "pattern"
+            ],
+            "fieldValidateRulesMaxlength": 10,
+            "fieldValidateRulesPattern": "0[67][0-9]{8}"
+        },
+        {
+            "fieldName": "indicatifInternational",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": 999
+        },
+        {
+            "fieldName": "notificationUid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marque",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "model",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "activationCode",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 1000,
+            "fieldValidateRulesMax": 9999
+        },
+        {
+            "fieldName": "activationTentative",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": 3
+        },
+        {
+            "fieldName": "activationDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "personne",
+            "otherEntityName": "personne",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "device"
+        }
+    ],
+    "changelogDate": "20190601081152",
+    "entityTableName": "device",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

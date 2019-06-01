@@ -1,0 +1,36 @@
+{
+    "name": "CommercantInformations",
+    "fields": [
+        {
+            "fieldName": "cle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "valeur",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "commercant",
+            "otherEntityName": "commercant",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190601081156",
+    "entityTableName": "commercant_informations",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

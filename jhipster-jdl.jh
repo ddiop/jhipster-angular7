@@ -1,32 +1,207 @@
-entity ImageBase64 {
-    name  String,
-    chemin String,
-    image Blob
-     		
+// Parametres JDL-Studio
+
+#title: tribee
+
+#direction: right
+
+#leading: 2
+
+
+
+// Initialisation de l'app mobile
+
+entity PropConfig {
+
+      nom String required,
+
+      valeur String required,
+
+      description String,
+
+      version String
+
 }
 
-entity Blog {
-    name String required minlength(3),
-    handle String required minlength(2)
+
+
+// Definition des informations Utilisateur
+
+entity Personne {
+
+    surnom String required minlength(2) maxlength(20) pattern(/[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]/),
+
+            civilite CIVILITE,
+
+    prenom String minlength(2) maxlength(40) pattern(/[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]/),
+
+    nom String minlength(2) maxlength(40) pattern(/[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]/),
+
+    mail String maxlength(254),
+
+    password String minlength(8) maxlength(120),
+
+    dateNaissance LocalDate,
+
+    cguVersion Integer min(1),
+
+    cguValide Boolean,
+
+    cguDateValidation LocalDate,
+
+    langue LANGUAGE
+
 }
 
-entity Entry {
-    title String required,
-    content TextBlob required,
-    date ZonedDateTime required
+
+
+entity Adresse {
+
+    adressePostale String,
+
+    codePostale String,
+
+    ville String,
+
+    pays String,
+
 }
 
-entity Tag {
-    name String required minlength(2)
+enum CIVILITE {
+
+            MR, MME
+
 }
 
-relationship ManyToOne {
-    Blog{user(login)} to User,
-    Entry{blog(name)} to Blog
+
+
+enum LANGUAGE {
+
+            FR, EN
+
 }
+
+
+
+// Definition des smartphones
+
+entity Device {
+
+    uuid String,
+
+            numero String maxlength(10) pattern(/0[67][0-9]{8}/),
+
+    indicatifInternational Integer min(0) max(999),
+
+            notificationUid String,
+
+            marque String maxlength(20),
+
+    model String maxlength(20),
+
+    activationCode Integer min(1000) max(9999),
+
+    activationTentative Integer min(0) max(3),
+
+            activationDate ZonedDateTime
+
+}
+
+
+
+// Definition des informations Evenement
+
+entity Evenement {
+
+            nom String required minlength(2) maxlength(40),
+
+    detail String,
+
+    lieuDepart String maxlength(40),
+
+    lieuDestination String maxlength(40),
+
+    dateDepart LocalDate,
+
+    dateRetour LocalDate,
+
+    dateReflexion LocalDate
+
+    dateCreation LocalDate
+
+}
+
+
+
+entity Participant {
+
+            organisateur Boolean
+
+}
+
+
+
+// Definition des informations Commercant
+
+entity Commercant {
+
+            nom String required minlength(1) maxlength(60)
+
+    // url String
+
+}
+
+
+
+entity CommercantInformations {
+
+            cle String minlength(1) maxlength(40),
+
+    valeur String
+
+}
+
+
+
+// Relations entre les tables
 
 relationship ManyToMany {
-    Entry{tag(name)} to Tag{entry}
+
+    Personne{device(uuid)} to Device{personne(nom)}
+
 }
 
-paginate Entry, Tag with infinite-scroll
+
+
+relationship OneToOne {
+
+            Personne{adresseResidence} to Adresse
+
+            Evenement{commercant} to Commercant
+
+}
+
+
+
+relationship OneToMany {
+
+    Personne{participe} to Participant,
+
+    Evenement{participant} to Participant,
+
+    Commercant{information} to CommercantInformations
+
+}
+
+
+
+// Set pagination options
+
+paginate PropConfig, Commercant, CommercantInformations with infinite-scroll
+
+paginate Personne, Device, Evenement with pagination
+
+
+
+// Set service options to all except few
+
+service all with serviceImpl

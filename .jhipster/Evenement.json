@@ -1,0 +1,77 @@
+{
+    "name": "Evenement",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 2,
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lieuDepart",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "lieuDestination",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "dateDepart",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateRetour",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateReflexion",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateCreation",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "commercant",
+            "otherEntityName": "commercant",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "evenement"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "participant",
+            "otherEntityName": "participant",
+            "otherEntityRelationshipName": "evenement"
+        }
+    ],
+    "changelogDate": "20190601081153",
+    "entityTableName": "evenement",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

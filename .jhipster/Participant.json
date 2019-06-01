@@ -1,0 +1,32 @@
+{
+    "name": "Participant",
+    "fields": [
+        {
+            "fieldName": "organisateur",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "personne",
+            "otherEntityName": "personne",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "evenement",
+            "otherEntityName": "evenement",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190601081154",
+    "entityTableName": "participant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

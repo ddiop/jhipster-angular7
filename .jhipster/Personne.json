@@ -1,0 +1,123 @@
+{
+    "name": "Personne",
+    "fields": [
+        {
+            "fieldName": "surnom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength",
+                "pattern"
+            ],
+            "fieldValidateRulesMinlength": 2,
+            "fieldValidateRulesMaxlength": 20,
+            "fieldValidateRulesPattern": "[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\\s\\\\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]\\"
+        },
+        {
+            "fieldName": "civilite",
+            "fieldType": "CIVILITE",
+            "fieldValues": "MR,MME"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "pattern"
+            ],
+            "fieldValidateRulesMinlength": 2,
+            "fieldValidateRulesMaxlength": 40,
+            "fieldValidateRulesPattern": "[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\\s\\\\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]\\"
+        },
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "pattern"
+            ],
+            "fieldValidateRulesMinlength": 2,
+            "fieldValidateRulesMaxlength": 40,
+            "fieldValidateRulesPattern": "[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ][a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\\s\\\\'-]{0,18}[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]\\"
+        },
+        {
+            "fieldName": "mail",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 254
+        },
+        {
+            "fieldName": "password",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 8,
+            "fieldValidateRulesMaxlength": 120
+        },
+        {
+            "fieldName": "dateNaissance",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "cguVersion",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
+        },
+        {
+            "fieldName": "cguValide",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "cguDateValidation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "langue",
+            "fieldType": "LANGUAGE",
+            "fieldValues": "FR,EN"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "adresseResidence",
+            "otherEntityName": "adresse",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "personne"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "participe",
+            "otherEntityName": "participant",
+            "otherEntityRelationshipName": "personne"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "personne(nom)",
+            "relationshipName": "device",
+            "otherEntityName": "device",
+            "otherEntityField": "uuid",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190601081150",
+    "entityTableName": "personne",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

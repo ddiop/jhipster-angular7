@@ -1,0 +1,33 @@
+{
+    "name": "Commercant",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 60
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "information",
+            "otherEntityName": "commercantInformations",
+            "otherEntityRelationshipName": "commercant"
+        }
+    ],
+    "changelogDate": "20190601081155",
+    "entityTableName": "commercant",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

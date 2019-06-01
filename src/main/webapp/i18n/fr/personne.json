@@ -1,0 +1,34 @@
+{
+    "jhipsterApp": {
+        "personne": {
+            "home": {
+                "title": "Personnes",
+                "createLabel": "Créer un nouveau Personne",
+                "createOrEditLabel": "Créer ou éditer un Personne"
+            },
+            "created": "Un nouveau Personne a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Personne avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Personne avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Personne {{ id }} ?"
+            },
+            "detail": {
+                "title": "Personne"
+            },
+            "surnom": "Surnom",
+            "civilite": "Civilite",
+            "prenom": "Prenom",
+            "nom": "Nom",
+            "mail": "Mail",
+            "password": "Password",
+            "dateNaissance": "Date Naissance",
+            "cguVersion": "Cgu Version",
+            "cguValide": "Cgu Valide",
+            "cguDateValidation": "Cgu Date Validation",
+            "langue": "Langue",
+            "adresseResidence": "Adresse Residence",
+            "participe": "Participe",
+            "device": "Device"
+        }
+    }
+}

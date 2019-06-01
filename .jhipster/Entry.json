@@ -1,0 +1,53 @@
+{
+    "name": "Entry",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "content",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "blog",
+            "otherEntityName": "blog",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "entry"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "entry",
+            "relationshipName": "tag",
+            "otherEntityName": "tag",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190501105353",
+    "entityTableName": "entry",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
