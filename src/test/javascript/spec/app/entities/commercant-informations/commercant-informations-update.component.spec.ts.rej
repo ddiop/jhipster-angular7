@@ -1,0 +1,62 @@
+diff a/src/test/javascript/spec/app/entities/commercant-informations/commercant-informations-update.component.spec.ts b/src/test/javascript/spec/app/entities/commercant-informations/commercant-informations-update.component.spec.ts	(rejected hunks)
+@@ -31,33 +31,27 @@ describe('Component Tests', () => {
+-            it(
+-                'Should call update service on save for existing entity',
+-                fakeAsync(() => {
+-                    // GIVEN
+-                    const entity = new CommercantInformations(123);
+-                    spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
+-                    comp.commercantInformations = entity;
+-                    // WHEN
+-                    comp.save();
+-                    tick(); // simulate async
+-
+-                    // THEN
+-                    expect(service.update).toHaveBeenCalledWith(entity);
+-                    expect(comp.isSaving).toEqual(false);
+-                })
+-            );
+-
+-            it(
+-                'Should call create service on save for new entity',
+-                fakeAsync(() => {
+-                    // GIVEN
+-                    const entity = new CommercantInformations();
+-                    spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
+-                    comp.commercantInformations = entity;
+-                    // WHEN
+-                    comp.save();
+-                    tick(); // simulate async
+-
+-                    // THEN
+-                    expect(service.create).toHaveBeenCalledWith(entity);
+-                    expect(comp.isSaving).toEqual(false);
+-                })
+-            );
++            it('Should call update service on save for existing entity', fakeAsync(() => {
++                // GIVEN
++                const entity = new CommercantInformations(123);
++                spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
++                comp.commercantInformations = entity;
++                // WHEN
++                comp.save();
++                tick(); // simulate async
++
++                // THEN
++                expect(service.update).toHaveBeenCalledWith(entity);
++                expect(comp.isSaving).toEqual(false);
++            }));
++
++            it('Should call create service on save for new entity', fakeAsync(() => {
++                // GIVEN
++                const entity = new CommercantInformations();
++                spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
++                comp.commercantInformations = entity;
++                // WHEN
++                comp.save();
++                tick(); // simulate async
++
++                // THEN
++                expect(service.create).toHaveBeenCalledWith(entity);
++                expect(comp.isSaving).toEqual(false);
++            }));
